@@ -1,0 +1,14 @@
+{
+  "name": "GATSO",
+  "version": "1.2.0",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "1e1",
+  "license": "ISC",
+  "dependencies": {
+    "axios": ">=0.21.1",
+    "node-stream-zip": "1.*"
+  }
+}

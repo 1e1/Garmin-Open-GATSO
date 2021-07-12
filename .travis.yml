@@ -1,0 +1,158 @@
+language: node_js
+#python:
+#  - "3.6"
+node_js:
+  - "16"
+addons:
+  apt:
+    #update: true
+    packages:
+    #- python3
+    #- python3-pip
+    - genisoimage
+    - gpsbabel
+
+cache:
+  directories:
+    - ./CACHE
+    
+branches:
+  only:
+    - master
+    - beta
+    #- develop
+    - travisci
+
+
+before_install:
+  - node -v
+  - printenv
+  - ls -al
+  - cd src
+  - npm install
+  - cd ..
+  - pip install --user configparser pandas pillow
+  #- pip3 install --user configparser pandas pillow
+  - ls -al
+
+install:
+  - ls -al
+  ############################################
+  - ./bin/make.sh --install-channel=$TRAVIS_BRANCH --install --cache
+  ############################################
+  - ls -al
+
+before_script:
+  - ls -al
+
+script: 
+  - ls -al
+  - TYP='csv gpx'
+  ############################################
+  - CNX='CNX_GATSO_FR'
+  - RLS='FR:gatso:'
+  - ./bin/make.sh --build=hasCache --run --build="$TYP" --build="$CNX" --release-prefix="$RLS"
+  - ls -lR ./RELEASES
+  ############################################
+  - CNX='CNX_GATSO_FR CNX_GATSO_EU'
+  - RLS='EU:gatso:'
+  - ./bin/make.sh --build=hasCache --run --build="$TYP" --build="$CNX" --release-prefix="$RLS"
+  - ls -lR ./RELEASES
+  ############################################
+  - CNX='CNX_FUEL_FR'
+  - RLS='FR:fuel:'
+  - ./bin/make.sh --build=hasCache --run --build="$TYP" --build="$CNX" --release-prefix="$RLS"
+  - ls -lR ./RELEASES
+  ############################################
+  - CNX='CNX_GATSO_FR CNX_FUEL_FR'
+  - RLS='FR:gatso-fuel:'
+  - ./bin/make.sh --build=hasCache --run --build="$TYP" --build="$CNX" --release-prefix="$RLS"
+  - ls -lR ./RELEASES
+  ############################################
+  - ./bin/make.sh --build=hasCache --run --image
+  - ls -lR ./RELEASES
+  ############################################
+  - ls -al
+
+before_deploy:
+  - ls -al
+  ############################################
+  - export GATSO_UPDATE_MAX=`date -d @$(cat ./BUILD/version.txt | sort -n | tail -1) +%Y-%m-%d`
+  - export RELEASE_DESCRIPTION=`cat ./BUILD/manifest.txt`
+  - export RELEASE_NAME="${TAG_PREFIX}${TRAVIS_BRANCH}"
+  ############################################
+  - echo "TRAVIS_TAG=$TRAVIS_TAG;"
+  - echo "TAG_PREFIX=$TAG_PREFIX;"
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH;"
+  - echo "GATSO_UPDATE_MAX=$GATSO_UPDATE_MAX;"
+  - "[[ $TRAVIS_TAG ]] || export TRAVIS_TAG=\"${TAG_PREFIX}${TRAVIS_BRANCH}.${GATSO_UPDATE_MAX}\""
+  - echo "TRAVIS_TAG=$TRAVIS_TAG"
+  ############################################
+  - ./bin/make.sh --uninstall
+  ############################################
+  #- ls -al
+  ############################################
+  - git config --local user.name "$USER_NAME"
+  - git config --local user.email "$USER_EMAIL"
+  #- git tag -l | grep "^${RELEASE_NAME}\." | tail -n +2 | xargs -n 1 -I_tag h -c 'echo "untag  _tag" ; git tag -d _tag ; git push --delete origin _tag'
+  - git tag --force "$TRAVIS_TAG" $TRAVIS_COMMIT
+  ############################################
+  - ls -hlR ./RELEASES
+  ############################################
+  - ls -al
+
+deploy:
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    name: "$RELEASE_NAME"
+    #body: "$RELEASE_DESCRIPTION" # https://github.com/travis-ci/dpl/issues/155
+    overwrite: true
+    prerelease: true
+    skip_cleanup: true
+    file_glob: true
+    file: ./RELEASES/*.zip
+    on:
+      tags: false
+      branch: 
+        - beta
+        - travisci
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    name: "$RELEASE_NAME"
+    #body: "$RELEASE_DESCRIPTION" # https://github.com/travis-ci/dpl/issues/155
+    overwrite: true
+    prerelease: false
+    skip_cleanup: true
+    file_glob: true
+    file: ./RELEASES/**/*
+    on:
+      tags: false
+      branch: 
+        - master
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    name: "$TRAVIS_TAG"
+    #body: "$RELEASE_DESCRIPTION" # https://github.com/travis-ci/dpl/issues/155
+    overwrite: true
+    prerelease: false
+    skip_cleanup: true
+    file_glob: false
+    file:
+      - ./RELEASES/all_files.zip
+      - ./RELEASES/*.iso.zip
+    on:
+      tags: true
+  - provider: pages
+    github-token: $GITHUB_TOKEN
+    skip-cleanup: true
+    keep-history: false
+    #target-branch: $TRAVIS_BRANCH
+    on:
+      branch: 
+        - master
+
+after_deploy:
+  - ls -al
+
+after_script:
+  - ls -al

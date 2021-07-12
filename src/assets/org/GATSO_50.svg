@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg 
+    version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="500px" height="500px"
+    viewBox="0 0 500 500" 
+    enable-background="new 0 0 500 500" 
+    >
+<defs>
+    <style>
+        #background { display: none; }
+    </style>
+</defs>
+<rect id="background" x="0" y="0" width="500" height="500" fill="#e8e437"/>
+<circle cx="250" cy="250" r="248" fill="#fff" stroke-width="0"/>
+<circle cx="250" cy="250" r="245" fill="#f00" stroke-width="0"/>
+<circle cx="250" cy="250" r="180" fill="#fff" stroke-width="0"/>
+<g fill="#000" text-anchor="middle" font-family="PingFang HK" font-weight="bold" font-size="260" stroke="#000" stroke-width="4" stroke-linecap="round">
+    <text y="347" x="250">50</text>
+</g>
+</svg>

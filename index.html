@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Open POI</title>
+        <meta name="description" content="EU POI location for Gamin-like GPS, TomTom, Navman… "/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="icon" href="./src/assets/icn/GATSO_ALL.png" type="image/png"/>
+        <link rel="stylesheet" href="./src/assets/css/style.css?v=2"/>
+        <meta property="og:title" content="Open GATSO POI"/>
+        <meta property="og:url" content="https://1e1.github.io/Open-GATSO-POI/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:description" content="EU POI location for Gamin-like GPS, TomTom, Navman… "/>
+        <meta property="og:image" content="https://1e1.github.io/Open-GATSO-POI/src/assets/img/cover.png"/>
+        <script type="text/javascript">
+            Node.prototype.firstPrevious = function(nodeName) {
+                var previousNode = this;
+                while (previousNode = previousNode.previousSibling) {
+                    if (nodeName.toUpperCase() === previousNode.nodeName.toUpperCase()) {
+                        return previousNode;
+                    }
+                }
+
+                return null;
+            }
+
+            window.addEventListener('load', function(ev) {
+                var tutimgs = document.querySelectorAll('*[data-tutimg]');
+
+                tutimgs.forEach(function(node) {
+                    var filename = node.dataset.tutimg;
+                    var parent = node;
+                    var img = null;
+                    
+                    while (parent = parent.parentNode) {
+                        img = parent.firstPrevious('img');
+                        if (img) {
+                            break;
+                        }
+                    }
+                    
+                    var src = img.src;
+                    var p = src.lastIndexOf('/');
+                    var path = src.substring(0, p+1) + filename;
+                    
+                    node.addEventListener('click', function(evt) {
+                        img.src = path;
+
+                        return false;
+                    });
+
+                    node.style.cursor = 'pointer';
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="head">
+            <h3>Latest version: <!-- [VERSION[ -->2021-07-12<!-- ]VERSION] --></h3>
+            <h3>Number of POIs: <!-- [AMOUNT[ -->164574<!-- ]AMOUNT] --></h3>
+            <h1>Open POI</h1>
+        </div>
+
+        <aside class="download">
+            <a href="./RELEASES/VAG_files.zip">VAG files</a>
+            <a href="./RELEASES/VAG_image.iso.zip">VAG iso</a>
+            <a href="./RELEASES/Garmin_files.zip">Garmin files</a>
+            <a href="./RELEASES/Garmin_image.iso.zip">Garmin iso</a>
+            <a href="./RELEASES/all_files.zip">csv gpx gpi ov2</a>
+        </aside>
+
+        <article>
+
+            <section>
+                <p>
+                    Daily it gives the latest set of <mark>speed cameras</mark> on the EU.
+                    <br />
+                    You can download lighter packages:
+                    <h4>VAG</h4>
+                    <div class="package">
+                        <fieldset>
+                            <legend>EU</legend>
+                            <a href="./RELEASES/VAG_files.zip">gatso + gas</a>
+                            <a href="./RELEASES/EU:gatso:VAG_files.zip">gatso</a>
+                        </fieldset>
+                        <fieldset>
+                            <legend>FR</legend>
+                            <a href="./RELEASES/FR:gatso-fuel:VAG_files.zip">gatso + gas</a>
+                            <a href="./RELEASES/FR:gatso:VAG_files.zip">gatso</a>
+                            <a href="./RELEASES/FR:fuel:VAG_files.zip">gas</a>
+                        </fieldset>
+                    </div>
+                    <h4>Garmin</h4>
+                    <div class="package">
+                        <fieldset>
+                            <legend>EU</legend>
+                            <a href="./RELEASES/Garmin_files.zip">gatso + gas</a>
+                            <a href="./RELEASES/EU:gatso:Garmin_files.zip">gatso</a>
+                        </fieldset>
+                        <fieldset>
+                            <legend>FR</legend>
+                            <a href="./RELEASES/FR:gatso-fuel:Garmin_files.zip">gatso + gas</a>
+                            <a href="./RELEASES/FR:gatso:Garmin_files.zip">gatso</a>
+                            <a href="./RELEASES/FR:fuel:Garmin_files.zip">gas</a>
+                        </fieldset>
+                    </div>
+                </p>
+                <!-- [X_COUNTRY[ --><table><thead><tr><td></td><th><span>AD</span></th><th><span>BE</span></th><th><span>CH</span></th><th><span>DE</span></th><th><span>ES</span></th><th><span>FR</span></th><th><span>GB</span></th><th><span>IT</span></th><th><span>LU</span></th><th><span>NL</span></th><th><span>PL</span></th><th><span>PT</span></th><th><span>SE</span></th><td></td></tr></thead><tbody><tr><th nowrap><img alt="30" src="./src/assets/img/GATSO_30_tn.png" /> 30</th><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><th>2990</th></tr><tr><th nowrap><img alt="40" src="./src/assets/img/GATSO_40_tn.png" /> 40</th><td></td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><th>996</th></tr><tr><th nowrap><img alt="50" src="./src/assets/img/GATSO_50_tn.png" /> 50</th><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><th>6626</th></tr><tr><th nowrap><img alt="60" src="./src/assets/img/GATSO_60_tn.png" /> 60</th><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><th>743</th></tr><tr><th nowrap><img alt="70" src="./src/assets/img/GATSO_70_tn.png" /> 70</th><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><th>2774</th></tr><tr><th nowrap><img alt="80" src="./src/assets/img/GATSO_80_tn.png" /> 80</th><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><th>2401</th></tr><tr><th nowrap><img alt="90" src="./src/assets/img/GATSO_90_tn.png" /> 90</th><td></td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><th>1561</th></tr><tr><th nowrap><img alt="100" src="./src/assets/img/GATSO_100_tn.png" /> 100</th><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><th>626</th></tr><tr><th nowrap><img alt="110" src="./src/assets/img/GATSO_110_tn.png" /> 110</th><td></td><td></td><td></td><td>✔︎</td><td></td><td>✔︎</td><td></td><td>✔︎</td><td></td><td>✔︎</td><td></td><td></td><td>✔︎</td><th>303</th></tr><tr><th nowrap><img alt="120" src="./src/assets/img/GATSO_120_tn.png" /> 120</th><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td></td><td></td><td>✔︎</td><td></td><td>✔︎</td><td></td><th>508</th></tr><tr><th nowrap><img alt="130" src="./src/assets/img/GATSO_130_tn.png" /> 130</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><th>214</th></tr><tr><th nowrap><img alt="GATSO" src="./src/assets/img/GATSO_ALL_tn.png" /> GATSO</th><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><th>26812</th></tr><tr><th nowrap><img alt="unknown" src="./src/assets/img/GATSO_unknown_0_tn.png" /> unknown</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>78</th></tr><tr><th nowrap><img alt="speed" src="./src/assets/img/GATSO_speed_0_tn.png" /> speed</th><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><th>19895</th></tr><tr><th nowrap><img alt="stop" src="./src/assets/img/GATSO_stop_0_tn.png" /> stop</th><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td></td><td></td><td></td><th>6839</th></tr><tr><th nowrap><img alt="redlight" src="./src/assets/img/GATSO_redlight_0_tn.png" /> redlight</th><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td></td><td></td><td></td><th>6761</th></tr><tr><th nowrap><img alt="railway" src="./src/assets/img/GATSO_railway_0_tn.png" /> railway</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>78</th></tr><tr><th nowrap><img alt="tunnel" src="./src/assets/img/GATSO_tunnel_0_tn.png" /> tunnel</th><td></td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>153</th></tr><tr><th nowrap><img alt="gazole" src="./src/assets/img/FUEL_gazole_tn.png" /> gazole</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>9727</th></tr><tr><th nowrap><img alt="b7" src="./src/assets/img/FUEL_b7_tn.png" /> b7</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>9727</th></tr><tr><th nowrap><img alt="flex" src="./src/assets/img/FUEL_flex_tn.png" /> flex</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>9727</th></tr><tr><th nowrap><img alt="e85" src="./src/assets/img/FUEL_e85_tn.png" /> e85</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>2562</th></tr><tr><th nowrap><img alt="petrol" src="./src/assets/img/FUEL_petrol_tn.png" /> petrol</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>9726</th></tr><tr><th nowrap><img alt="e10" src="./src/assets/img/FUEL_e10_tn.png" /> e10</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>6938</th></tr><tr><th nowrap><img alt="e5" src="./src/assets/img/FUEL_e5_tn.png" /> e5</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>9457</th></tr><tr><th nowrap><img alt="sp95" src="./src/assets/img/FUEL_sp95_tn.png" /> sp95</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>4272</th></tr><tr><th nowrap><img alt="sp98" src="./src/assets/img/FUEL_sp98_tn.png" /> sp98</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>8179</th></tr><tr><th nowrap><img alt="gaz" src="./src/assets/img/FUEL_gaz_tn.png" /> gaz</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>1453</th></tr><tr><th nowrap><img alt="lpg" src="./src/assets/img/FUEL_lpg_tn.png" /> lpg</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>1444</th></tr><tr><th nowrap><img alt="gpl" src="./src/assets/img/FUEL_gpl_tn.png" /> gpl</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>1444</th></tr><tr><th nowrap><img alt="gnv" src="./src/assets/img/FUEL_gnv_tn.png" /> gnv</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>28</th></tr><tr><th nowrap><img alt="electricity" src="./src/assets/img/FUEL_electricity_tn.png" /> electricity</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>366</th></tr><tr><th nowrap><img alt="pressure" src="./src/assets/img/FUEL_pressure_tn.png" /> pressure</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>5557</th></tr><tr><th nowrap><img alt="adblue" src="./src/assets/img/FUEL_adblue_tn.png" /> adblue</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th>3609</th></tr></tbody><tfoot><tr><td></td><th>56850</th><th>78536</th><th>78124</th><th>79988</th><th>76695</th><th>161548</th><th>77971</th><th>79541</th><th>57668</th><th>79835</th><th>65424</th><th>64936</th><th>65727</th><td>#</td></tr></tfoot></table><!-- ]X_COUNTRY] -->
+                <p>
+                    Activate only the <mark>POI</mark> near you. 
+                    Their name on your <mark>GPS</mark> is like 
+                        <code>|110| DE FR IT NL SE</code>.
+                </p>
+                <!-- [X_GATSO[ --><table><thead><tr><td></td><th><span>car100</span></th><th><span>car110</span></th><th><span>car120</span></th><th><span>car130</span></th><th><span>car30</span></th><th><span>car40</span></th><th><span>car50</span></th><th><span>car60</span></th><th><span>car70</span></th><th><span>car80</span></th><th><span>car90</span></th><th><span>empty</span></th><th><span>railroad</span></th><th><span>traffic_light</span></th><th><span>tunnel</span></th></tr></thead><tbody><tr><th nowrap><img alt="30" src="./src/assets/img/GATSO_30_tn.png" /> 30</th><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="40" src="./src/assets/img/GATSO_40_tn.png" /> 40</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="50" src="./src/assets/img/GATSO_50_tn.png" /> 50</th><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="60" src="./src/assets/img/GATSO_60_tn.png" /> 60</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="70" src="./src/assets/img/GATSO_70_tn.png" /> 70</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="80" src="./src/assets/img/GATSO_80_tn.png" /> 80</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="90" src="./src/assets/img/GATSO_90_tn.png" /> 90</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="100" src="./src/assets/img/GATSO_100_tn.png" /> 100</th><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="110" src="./src/assets/img/GATSO_110_tn.png" /> 110</th><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="120" src="./src/assets/img/GATSO_120_tn.png" /> 120</th><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="130" src="./src/assets/img/GATSO_130_tn.png" /> 130</th><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="GATSO" src="./src/assets/img/GATSO_ALL_tn.png" /> GATSO</th><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td></tr><tr><th nowrap><img alt="unknown" src="./src/assets/img/GATSO_unknown_0_tn.png" /> unknown</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="speed" src="./src/assets/img/GATSO_speed_0_tn.png" /> speed</th><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td></td><td></td><td>✔︎</td></tr><tr><th nowrap><img alt="stop" src="./src/assets/img/GATSO_stop_0_tn.png" /> stop</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td>✔︎</td><td></td></tr><tr><th nowrap><img alt="redlight" src="./src/assets/img/GATSO_redlight_0_tn.png" /> redlight</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td></tr><tr><th nowrap><img alt="railway" src="./src/assets/img/GATSO_railway_0_tn.png" /> railway</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td></tr><tr><th nowrap><img alt="tunnel" src="./src/assets/img/GATSO_tunnel_0_tn.png" /> tunnel</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td></tr></tbody></table><!-- ]X_GATSO] -->
+                <!-- [X_SERVICE[ --><table><thead><tr><td></td><th><span>adblue</span></th><th><span>b10</span></th><th><span>b7</span></th><th><span>e10</span></th><th><span>e5</span></th><th><span>e85</span></th><th><span>electricity</span></th><th><span>gazole</span></th><th><span>gnv</span></th><th><span>gpl</span></th><th><span>h2</span></th><th><span>lng</span></th><th><span>lpg</span></th><th><span>pressure</span></th><th><span>sp95</span></th><th><span>sp98</span></th><th><span>xtl</span></th></tr></thead><tbody><tr><th nowrap><img alt="gazole" src="./src/assets/img/FUEL_gazole_tn.png" /> gazole</th><td></td><td>✔︎</td><td>✔︎</td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td></tr><tr><th nowrap><img alt="b7" src="./src/assets/img/FUEL_b7_tn.png" /> b7</th><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="b10" src="./src/assets/img/FUEL_b10_tn.png" /> b10</th><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="xtl" src="./src/assets/img/FUEL_xtl_tn.png" /> xtl</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td></tr><tr><th nowrap><img alt="flex" src="./src/assets/img/FUEL_flex_tn.png" /> flex</th><td></td><td></td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td>✔︎</td><td></td></tr><tr><th nowrap><img alt="e85" src="./src/assets/img/FUEL_e85_tn.png" /> e85</th><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="petrol" src="./src/assets/img/FUEL_petrol_tn.png" /> petrol</th><td></td><td></td><td></td><td>✔︎</td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td>✔︎</td><td></td></tr><tr><th nowrap><img alt="e10" src="./src/assets/img/FUEL_e10_tn.png" /> e10</th><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="e5" src="./src/assets/img/FUEL_e5_tn.png" /> e5</th><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td>✔︎</td><td></td></tr><tr><th nowrap><img alt="sp95" src="./src/assets/img/FUEL_sp95_tn.png" /> sp95</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td></tr><tr><th nowrap><img alt="sp98" src="./src/assets/img/FUEL_sp98_tn.png" /> sp98</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td></tr><tr><th nowrap><img alt="gaz" src="./src/assets/img/FUEL_gaz_tn.png" /> gaz</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td>✔︎</td><td>✔︎</td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="lpg" src="./src/assets/img/FUEL_lpg_tn.png" /> lpg</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="gpl" src="./src/assets/img/FUEL_gpl_tn.png" /> gpl</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="gnv" src="./src/assets/img/FUEL_gnv_tn.png" /> gnv</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="lng" src="./src/assets/img/FUEL_lng_tn.png" /> lng</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="h2" src="./src/assets/img/FUEL_h2_tn.png" /> h2</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="electricity" src="./src/assets/img/FUEL_electricity_tn.png" /> electricity</th><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="pressure" src="./src/assets/img/FUEL_pressure_tn.png" /> pressure</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✔︎</td><td></td><td></td><td></td></tr><tr><th nowrap><img alt="adblue" src="./src/assets/img/FUEL_adblue_tn.png" /> adblue</th><td>✔︎</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><!-- ]X_SERVICE] -->
+                <h2>suggestions</h2>
+                <div class="package">
+                    <fieldset>
+                        <legend>minimalist</legend>
+                        only one alert for <br/>
+                        all kinds of stalkers
+                        <div class="set">
+                            <img alt="ALL" src="./src/assets/img/GATSO_ALL_tn.png" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>light</legend>
+                        one alert for speed control, <br/>
+                        another one for stop cams
+                        <div class="set">
+                            <img alt="speed" src="./src/assets/img/GATSO_speed_0_tn.png" />
+                            <img alt="stop" src="./src/assets/img/GATSO_stop_0_tn.png" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>full</legend>
+                        one alert per kind of stalker
+                        <div class="set">
+                            <img alt="10" src="./src/assets/img/GATSO_10_tn.png" />
+                            <img alt="20" src="./src/assets/img/GATSO_20_tn.png" />
+                            <img alt="30" src="./src/assets/img/GATSO_30_tn.png" />
+                            <img alt="40" src="./src/assets/img/GATSO_40_tn.png" />
+                            <img alt="50" src="./src/assets/img/GATSO_50_tn.png" />
+                            <img alt="60" src="./src/assets/img/GATSO_60_tn.png" />
+                            <img alt="70" src="./src/assets/img/GATSO_70_tn.png" />
+                            <img alt="80" src="./src/assets/img/GATSO_80_tn.png" />
+                            <img alt="90" src="./src/assets/img/GATSO_90_tn.png" />
+                            <img alt="100" src="./src/assets/img/GATSO_100_tn.png" />
+                            <img alt="110" src="./src/assets/img/GATSO_110_tn.png" />
+                            <img alt="120" src="./src/assets/img/GATSO_120_tn.png" />
+                            <img alt="130" src="./src/assets/img/GATSO_130_tn.png" />
+                            <img alt="redlight" src="./src/assets/img/GATSO_redlight_0_tn.png" />
+                            <img alt="railway" src="./src/assets/img/GATSO_railway_0_tn.png" />
+                            <img alt="tunnel" src="./src/assets/img/GATSO_tunnel_0_tn.png" />
+                            <img alt="unknown" src="./src/assets/img/GATSO_unknown_0_tn.png" />
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="package">
+                    <fieldset>
+                        <legend>minimalist</legend>
+                        <div class="set">
+                            <img alt="ALL" src="./src/assets/img/FUEL_ALL_tn.png" />
+                            <img alt="pressure" src="./src/assets/img/FUEL_pressure_tn.png" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>light gazole</legend>
+                        <div class="set">
+                            <img alt="gazole" src="./src/assets/img/FUEL_gazole_tn.png" />
+                            <img alt="adblue" src="./src/assets/img/FUEL_adblue_tn.png" />
+                            <img alt="pressure" src="./src/assets/img/FUEL_pressure_tn.png" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>light petrol</legend>
+                        <div class="set">
+                            <img alt="petrol" src="./src/assets/img/FUEL_petrol_tn.png" />
+                            <img alt="pressure" src="./src/assets/img/FUEL_pressure_tn.png" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>light gaz</legend>
+                        <div class="set">
+                            <img alt="gaz" src="./src/assets/img/FUEL_gaz_tn.png" />
+                            <img alt="pressure" src="./src/assets/img/FUEL_pressure_tn.png" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>full</legend>
+                        <div class="set">
+                            <img alt="gazole" src="./src/assets/img/FUEL_gazole_tn.png" />
+                            <img alt="e10" src="./src/assets/img/FUEL_e10_tn.png" />
+                            <img alt="sp95" src="./src/assets/img/FUEL_sp95_tn.png" />
+                            <img alt="e85" src="./src/assets/img/FUEL_e85_tn.png" />
+                            <img alt="sp98" src="./src/assets/img/FUEL_sp98_tn.png" />
+                            <img alt="gpl" src="./src/assets/img/FUEL_gpl_tn.png" />
+                            <img alt="gnv" src="./src/assets/img/FUEL_gnv_tn.png" />
+                            <img alt="adblue" src="./src/assets/img/FUEL_adblue_tn.png" />
+                            <img alt="pressure" src="./src/assets/img/FUEL_pressure_tn.png" />
+                        </div>
+                    </fieldset>
+                </div>
+            </section>
+
+            <section>
+                <p>
+                    <ul>
+                        <li>
+                            <span>GPX (accurate)</span>
+                            <ul>
+                                <li>Garmin (embeded into VolksWagen, MAN, Skoda, Seat, etc.)</li>
+                                <li>Mercedes</li>
+                                <li>Volvo</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>CSV (verbose)</span>
+                            <ul>
+                                <li>Garmin (embeded into VolksWagen, MAN, Skoda, Seat, etc.)</li>
+                                <li>Navman</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>OV2 (minimalist)</span>
+                            <ul>
+                                <li>TomTom (embeded into Fiat, Peugeot, etc.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+            </section>
+
+            <div class="cover">
+                <img alt="VW website" src="./src/assets/img/carnet.png" />
+            </div>
+
+            <section>
+                <h2>installation</h2>
+
+                <p>4 methods:</p>
+                <fieldset>
+                    <legend>Quick (on SD Card)</legend>
+                    <ul>
+                        <li>download <a href="./RELEASES/VAG_image.zip">VAG_image.zip</a></li>
+                        <li>unzip it</li>
+                        <li>copy the files on your SD Card</li>
+                        <li>insert the SD Card in your GPS</li>
+                        <li>you should manually import the POI (see explanations)</li>
+                    </ul>
+                </fieldset>
+                <fieldset>
+                    <legend>Secure (on SD Card)</legend>
+                    <ul>
+                        <li>download <a href="./RELEASES/VAG_image.iso.zip">VAG_image.iso.zip</a></li>
+                        <li>unzip it</li>
+                        <li>burn it on a SD Card</li>
+                        <li>insert the SD Card in your GPS</li>
+                        <li>you should manually import the POI</li>
+                    </ul>
+                </fieldset>
+                <fieldset>
+                    <legend>Official online</legend>
+                    <ul>
+                        <li>download <a href="./RELEASES/all_files.zip">all_files.zip</a></li>
+                        <li>unzip it</li>
+                        <li>go to the website of your car maker (eg <a href="https://www.volkswagen-car-net.com">VW</a>) (please, contact me for others links)</li>
+                        <li>upload every CSV or GPX as new POIs</li>
+                        <li>connect your car to the Internet</li>
+                        <li>update your GPS</li>
+                    </ul>
+                </fieldset>
+                <fieldset>
+                    <legend>Official on SD Card</legend>
+                    <ul>
+                        <li>download <a href="./RELEASES/gpx_files.zip">gpx_files.zip</a></li>
+                        <li>unzip it</li>
+                        <li>download <a href="https://www8.garmin.com/support/collection.jsp?product=999-99999-12">Garmin POI Loader</a></li>
+                        <li>run Garmin POI Loader and let the wizard lead you</li>
+                        <li>insert the SD Card in your GPS</li>
+                        <li>you should manually import the POI (see explanations)</li>
+                    </ul>
+                </fieldset>
+            </section>
+
+            <section>
+                <h2>explanations</h2>
+                It is interactive, you can click on the buttons in the text.
+
+                <h3>VW Discover Media</h3>
+                <img alt="tuto" src="./src/assets/man/off.jpg"/>
+                <ul>
+                    <li>press the <span class="button" data-tutimg="screen_eu.jpg">NAV</span> button</li>
+                    <li>insert the SD Card into the second card connector of your GPS</li>
+                    <li>select <span class="menu" data-tutimg="settings.jpg">Configuration</span></li>
+                    <li>select <span class="menu" data-tutimg="storage.jpg">Gérer la mémoire</span></li>
+                    <li>select <span class="menu" data-tutimg="update.jpg">Mettre à jour mes destinations spéciales</span></li>
+                    <li>waiting for <span class="menu">Logiciel de mise à jour disponible</span>then press <span class="menu" data-tutimg="updating.jpg">mise à jour</span> then press <span class="menu" data-tutimg="updated.jpg">Continuer</span></li>
+                    <li>while it terminated, press the <span class="button" data-tutimg="screen_eu.jpg">NAV</span> button</li>
+                    <li>select <span class="menu" data-tutimg="settings.jpg">Configuration</span></li>
+                    <li>select <span class="menu" data-tutimg="map.jpg">Carte</span></li>
+                    <li>select <span class="menu" data-tutimg="checking.jpg">Sélectionner catégories de destinations spéciales</span></li>
+                    <li>scroll down to GATSO and check which POI you want</li>
+                    <li><span class="check" data-tutimg="checked.jpg">check</span> your POIs</li>
+                    <li>press the <span class="button" data-tutimg="screen_eu.jpg">NAV</span> button</li>
+                    <li>remove your SD Card</li>
+                    <li>enjoy</li>
+                </ul>
+            </section>
+
+        </article>
+        
+        <footer>
+            <img alt="version File System" src="./cnx/fs.svg" />
+            <img alt="version GATSO FR" src="./cnx/gatso-FR.svg" />
+            <img alt="version GATSO EU" src="./cnx/gatso-EU.svg" />
+            <img alt="version FUEL FR" src="./cnx/fuel-FR.svg" />
+            <img alt="version GPSBabel" src="./cnx/gpsbabel.svg" />
+            <a alt="fork me on github" href="https://github.com/1e1/Open-GATSO-POI/">
+                <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+                    </path>
+                </svg>
+                fork me on github
+            </a>
+        </footer>
+    </body>
+</html>

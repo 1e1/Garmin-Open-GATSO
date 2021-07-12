@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" height="20" width="128">
+    <linearGradient id="a" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <rect rx="3" height="20" fill="#555" width="128"/>
+    <rect rx="3" height="20" fill="#999" width="78" x="50"/>
+    <path fill="#999" d="M50 0h4v20h-4z"/>
+    <rect rx="3" height="20" fill="url(#a)" width="128"/>
+    <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+        <text y="15" fill="#010101" fill-opacity=".3" x="25">SYSTEM</text>
+        <text y="14" x="25">SYSTEM</text>
+        <text y="15" fill="#010101" fill-opacity=".3" x="88"><!-- [V_fs[ -->2019-06-05<!-- ]V_fs] --></text>
+        <text y="14" x="88"><!-- [V_fs[ -->2019-06-05<!-- ]V_fs] --></text>
+    </g>
+</svg>
